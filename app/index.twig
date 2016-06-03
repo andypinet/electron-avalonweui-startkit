@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hashbang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="assets/js/lib.js"></script>
+    <script src="assets/js/index.js"></script>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <base href="">
+    <style>
+        .ms-controller{
+            display:none;
+        }
+    </style>
+</head>
+<body >
+    <main ms-controller="test">
+        <h1>Hashbang</h1>
+        <p></p>
+        <ul>
+            <li><a href="./index">index</a></li>
+            <li><a href="./about">/about</a></li>
+            <li><a href="./contact">/contact</a></li>
+            <li><a href="./contact/me">/contact/me</a></li>
+        </ul>
+
+        <template ms-widget="[{is:'zl-app-route'},@approuteconfig]">
+            <div slot="page" class="zl-page" data-route="index" >
+                <div class="hammer-carousel-panes wrapper">
+                    <div class="hammer-carousel-pane bg1">
+                        <div class="hammer-carousel-panes">
+                            <div class="pane" style="background: rgba(0,0,0,0);">1.1</div>
+                        </div>
+                    </div>
+                    <div class="hammer-carousel-pane bg2">
+                        <div class="hammer-carousel-panes">
+                            <div class="pane" style="background: rgba(0,0,0,0);">2.1</div>
+                        </div>
+                    </div>
+                    <div class="hammer-carousel-pane bg3">
+                        <div class="hammer-carousel-panes">
+                            <div class="pane" style="background: rgba(0,0,0,0);">3.1</div>
+
+                        </div>
+                    </div>
+                    <div class="hammer-carousel-pane bg4">
+                        <div class="hammer-carousel-panes">
+                            <div class="pane" style="background: rgba(0,0,0,0);">4.1</div>
+                        </div>
+                    </div>
+                    <div class="hammer-carousel-pane bg5">
+                        <div class="hammer-carousel-panes">
+                            <div class="pane" style="background: rgba(0,0,0,0);">5.1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div slot="page" class="zl-page" data-route="about">about</div>
+            <div slot="page" class="zl-page" data-route="contact">contact</div>
+        </template>
+    </main>
+<script>
+    avalon.ready(function () {
+        window.ready();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "eatodo",
+  "description": "Simple TODO application built with Electron and AngularJS.",
+  "main": "",
+  "authors": [
+    "Vjekoslav Ratkajec"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^0.7.22",
+    "hammerjs": "https://github.com/hammerjs/hammer.js.git#^2.0.8",
+    "page": "visionmedia/page.js#^1.7.1"
+  }
+}

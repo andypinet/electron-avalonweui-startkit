@@ -1,0 +1,21 @@
+@mixin com-zhilizhili-ui-zl-view() {
+    .zl-view {
+        position: relative;
+        width:800px;
+        height:500px;
+    }
+
+    .zl-page {
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        z-index:-1;
+        background-color: #fff;
+    }
+
+    .zl-page[selected] {
+        z-index:1000;
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "electron-ui-startkit",
+  "version": "0.0.1",
+  "description": "Simple electron application",
+  "author": "Andypinet <lbc869471779@gmail.com>",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "browser-sync start --server --files='./**/*'",
+    "build:lib:js": "gulp build-lib-js --name 'lib.js' --src 'v1/lib/avalon2.modren.min.js,bower_components/hammerjs/hammer.js,bower_components/page/page.js'  --dest 'assets/js/' ",
+    "build": "npm run build:lib:js",
+    "watch:index:js": "gulp watch-cmd-js --name index --dest /js/ --watch 'v1/js/**/*.js'",
+    "watch:index:template": "gulp watch-swig-template --name index --watch '**/*.twig'"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
+    "debounce": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^2.0.8",
+    "gulp-concat": "^2.6.0",
+    "gulp-param": "^1.0.3",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-swig": "^0.8.0",
+    "gulp-uglify": "^1.5.3",
+    "swig-lodash": "^1.2.1",
+    "zhilizhili-swig": "^1.1.3"
+  }
+}

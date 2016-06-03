@@ -1,0 +1,17 @@
+#directories
+bower_components
+node_modules
+dist
+.vscode
+release
+
+#files
+*.tgz
+*.log
+
+#idea
+.idea/
+
+app/v1/sass/**/*.css
+app/v1/sass/**/*.css.map
+app/.sass-cache
