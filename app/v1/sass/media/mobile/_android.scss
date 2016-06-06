@@ -1,0 +1,55 @@
+$com-zhilizhili-media-mobile-android-xxhdpi-mediaquery: unquote("@media only screen and (-webkit-device-pixel-ratio: $ratio),only screen and (resolution: 124dpi)") !global;
+
+@mixin com-zhilizhili-media-mobile-android-hdpi($ratio: 1.3) {
+    @media only screen and (-webkit-device-pixel-ratio: $ratio),
+    only screen and (resolution: #{round($ratio*96)}dpi) {
+        @content;
+    }
+}
+
+$com-zhilizhili-media-mobile-android-xxhdpi-mediaquery: unquote("@media only screen and (-webkit-device-pixel-ratio: $ratio),only screen and (resolution: 192dpi)") !global;
+
+@mixin com-zhilizhili-media-mobile-android-xhdpi($ratio: 2.0) {
+    @media only screen and (-webkit-device-pixel-ratio: $ratio),
+    only screen and (resolution: #{round($ratio*96)}dpi) {
+        @content;
+    }
+}
+
+$com-zhilizhili-media-mobile-android-xxhdpi-mediaquery: unquote("@media only screen and (-webkit-device-pixel-ratio: $ratio),only screen and (resolution: 288dpi)") !global;
+
+@mixin com-zhilizhili-media-mobile-android-xxhdpi($ratio: 3.0) {
+    @media only screen and (-webkit-device-pixel-ratio: $ratio),
+    only screen and (resolution: #{round($ratio*96)}dpi) {
+        @content;
+    }
+}
+
+$com-zhilizhili-media-mobile-android-xxxhdpi-mediaquery: unquote("@media only screen and (-webkit-device-pixel-ratio: $ratio),only screen and (resolution: 384dpi)") !global;
+
+@mixin com-zhilizhili-media-mobile-android-xxxhdpi($ratio: 4.0) {
+    @media only screen and (-webkit-device-pixel-ratio: $ratio),
+    only screen and (resolution: #{round($ratio*96)}dpi) {
+        @content;
+    }
+}
+
+$com-zhilizhili-media-mobile-ios-plus-to-android: 360 / 414 !global;
+$com-zhilizhili-media-mobile-ios-media-to-android: 360 / 375 !global;
+$com-zhilizhili-media-mobile-ios-small-to-android: 360 / 320 !global;
+
+@function com-zhilizhili-media-mobile-ios-plus-to-android($value) {
+    @return $value * $com-zhilizhili-media-mobile-ios-plus-to-android;
+}
+
+@function com-zhilizhili-media-mobile-ios-media-to-android($value) {
+    @return $value * $com-zhilizhili-media-mobile-ios-media-to-android;
+}
+
+@function com-zhilizhili-media-mobile-ios-small-to-android($value) {
+    @return $value * $com-zhilizhili-media-mobile-ios-small-to-android;
+}
+
+@function com-zhilizhili-media-mobile-ios-design-to-android($value) {
+    @return com-zhilizhili-media-mobile-ios-plus-to-android($value / 3);
+}

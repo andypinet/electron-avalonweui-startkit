@@ -1,0 +1,69 @@
+$com-zhilizhili-media-mobile-ios-plus-to-media: 375 / 414 !global;
+$com-zhilizhili-media-mobile-ios-plus-to-small: 320 / 414 !global;
+
+// design (1242) -> plus (414)
+@function com-zhilizhili-media-mobile-ios-design-to-plus($value) {
+    @return $value / 3;
+}
+
+// plus (414) -> media (375)
+@function com-zhilizhili-media-mobile-ios-plus-to-media($value) {
+    @return $value * $com-zhilizhili-media-mobile-ios-plus-to-media;
+}
+
+// plus (414) -> small (320)
+@function com-zhilizhili-media-mobile-ios-plus-to-small($value) {
+    @return $value * $com-zhilizhili-media-mobile-ios-plus-to-small;
+}
+
+@function com-zhilizhili-media-mobile-ios-design-to-media($value) {
+    @return com-zhilizhili-media-mobile-ios-plus-to-media(com-zhilizhili-media-mobile-ios-design-to-plus($value));
+}
+
+@function com-zhilizhili-media-mobile-ios-design-to-small($value) {
+    @return com-zhilizhili-media-mobile-ios-plus-to-small(com-zhilizhili-media-mobile-ios-design-to-plus($value));
+}
+
+
+$com-zhilizhili-media-ios-iphone4-media-query: mq(
+        $min-device-width: 320px,
+        $max-device-width: 480px,
+        $orientation: false,
+        $device-aspect-ratio: 2,
+        $-webkit-device-pixel-ratio: '2/3'
+) !global;
+
+$com-zhilizhili-media-ios-iphone5-media-query: mq(
+        $min-device-width: 320px,
+        $max-device-width: 568px,
+        $orientation: false,
+        $device-aspect-ratio: 2,
+        $-webkit-device-pixel-ratio: '40/71'
+) !global;
+
+$com-zhilizhili-media-ios-iphone6-media-query: mq(
+        $min-device-width: 375px,
+        $max-device-width: 667px,
+        $orientation: false,
+        $device-aspect-ratio: 2
+) !global;
+
+$com-zhilizhili-media-ios-iphone6-plus-media-query: mq(
+        $min-device-width: 414px,
+        $max-device-width: 736px,
+        $orientation: false,
+        $device-aspect-ratio: 3
+) !global;
+
+$com-zhilizhili-media-ios-ipad-media-query: mq(
+        $min-device-width: 768px,
+        $max-device-width: 1024px,
+        $orientation: false
+) !global;
+
+$com-zhilizhili-media-ios-ipad-retina-media-query: mq(
+        $min-device-width: 768px,
+        $max-device-width: 1024px,
+        $orientation: false,
+        $-webkit-device-pixel-ratio: 2
+) !global;

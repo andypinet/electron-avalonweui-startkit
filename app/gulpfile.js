@@ -25,6 +25,12 @@ var es6module = require("./build/es6");
 // template
 var templateModule = require("./build/template");
 
+// image
+var imageModule = require("./build/image");
+var imageToBase64 = imageModule.imageToBase64;
+var imageToWebp = imageModule.imageToWebp;
+var imageToIos = imageModule.imageToIos;
+
 localscsscompile({
     taskname: "watch-src-css",
     gulp: gulp,
@@ -52,6 +58,31 @@ es6module({
 templateModule({
     gulp: gulp,
     paths: paths
+});
+
+imageToBase64({
+    taskname: "build-base64-image",
+    gulp: gulp,
+    srcpath: "./v1/images/ios/1.jpg",
+    destpath: "./tmp/base64",
+    tmppath: "./tmp/images",
+    ratio: 0.02,
+    minwidth: 35
+});
+
+imageToIos({
+    taskname: "build-ios-image",
+    gulp: gulp,
+    srcpath: "./v1/images/ios/1.jpg",
+    destpath: "./assets/images/ios"
+});
+
+imageToWebp({
+    taskname: "build-webp-image",
+    gulp: gulp,
+    srcpath: "./v1/images/wallhaven-189905.jpg",
+    destpath: "./tmp/webp",
+    tmppath: "./tmp/images",
 });
 
 var concat = require("gulp-concat");

@@ -1,0 +1,19 @@
+@function mq($args...) {
+    $media-type: 'only screen';
+    $media-type-key: 'media-type';
+    $args: keywords($args);
+    $expr: '';
+
+    @if map-has-key($args, $media-type-key) {
+        $media-type: map-get($args, $media-type-key);
+        $args: map-remove($args, $media-type-key);
+    }
+
+    @each $key, $value in $args {
+        @if $value {
+            $expr: "#{$expr} and (#{$key}: #{$value})";
+        }
+    }
+
+    @return unquote("#{$media-type} #{$expr}");
+}

@@ -15,3 +15,4 @@ release
 app/v1/sass/**/*.css
 app/v1/sass/**/*.css.map
 app/.sass-cache
+app/tmp
