@@ -6,22 +6,66 @@
   <title>Document</title>
     <script src="assets/js/lib.js"></script>
     <script>
-        var vm = avalon.define({
+        function handleReasons(reasons, vm) {
+            reasons.forEach(function (reason) {
+                switch (reason.element.dataset.fid) {
+                    case 'loginform_username':
+                        vm.aaaField.errorMessage = reason.getMessage();
+                        break;
+                    case 'loginform_password':
+                        vm.bbbField.errorMessage = reason.getMessage();
+                        break;
+                    case 'loginform_equalpassword':
+                        vm.cccField.errorMessage = reason.getMessage();
+                        break;
+                    default: break;
+                }
+            });
+        }
+
+        function clearErrorMessages(fid, vm) {
+            switch (fid) {
+                case 'loginform_username':
+                    vm.aaaField.errorMessage = '';
+                    break;
+                case 'loginform_password':
+                    vm.bbbField.errorMessage = '';
+                    break;
+                case 'loginform_equalpassword':
+                    vm.cccField.errorMessage = '';
+                    break;
+                default: break;
+            }
+        }
+
+        var appvm = avalon.define({
             $id: "test",
             aaa: "",
             bbb: '',
             ccc: '',
+            aaaField: {
+                errorMessage: ''
+            },
+            bbbField: {
+                errorMessage: ''
+            },
+            cccField: {
+                errorMessage: ''
+            },
             validate: {
                 onError: function (reasons) {
-                    reasons.forEach(function (reason) {
-                        console.log(reason.getMessage())
-                    })
+                    handleReasons(reasons, appvm);
+                },
+                onSuccess: function (reasons) {
+                    console.dir(this);
+                    var self = this;
+                    clearErrorMessages(self.dataset.fid, appvm);
                 },
                 onValidateAll: function (reasons) {
                     if (reasons.length) {
-                        console.log('有表单没有通过')
+                        console.log('有表单没有通过');
                     } else {
-                        console.log('全部通过')
+                        console.log('全部通过');
                     }
                 }
             }
@@ -31,14 +75,20 @@
 </head>
 <body ms-controller="test">
     <form ms-validate="@validate">
-        <p><input ms-duplex="@aaa" placeholder="username"
+        <p><input name="username" ms-duplex="@aaa" placeholder="username"
+                  data-fid="loginform_username"
                   ms-rules='{required:true,chs:true}' >{{@aaa}}</p>
-        <p><input type="password" id="pw" placeholder="password"
+        <div class="helpblock">{{@aaaField.errorMessage}}</div>
+        <p><input name="password" type="password" id="pw" placeholder="password"
+                  data-fid="loginform_password"
                   ms-rules='{required:true}'
                   ms-duplex="@bbb" /></p>
-        <p><input type="password"
+        <div class="helpblock">{{@bbbField.errorMessage}}</div>
+        <p><input name="equalpassword" type="password"
+                  data-fid="loginform_equalpassword"
                   ms-rules='{required:true,equalto:"pw"}' placeholder="再填一次"
                   ms-duplex="@ccc | change" /></p>
+        <div class="helpblock">{{@cccField.errorMessage}}</div>
         <p><input type="submit" value="submit"/></p>
     </form>
 </body>
