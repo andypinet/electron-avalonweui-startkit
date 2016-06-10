@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "browser-sync start --server --files='./**/*'",
+    "server": "http-server -p 3000 -S -K privatekey.pem -C certificate.pem",
     "build:lib:js": "gulp build-lib-js --name 'lib.js' --src 'v1/lib/avalon2.modern.min.js,bower_components/hammerjs/hammer.js,bower_components/page/page.js'  --dest 'assets/js/' ",
     "build": "npm run build:lib:js",
     "watch:index:js": "gulp watch-cmd-js --name index --dest /js/ --watch 'v1/js/**/*.js'",

@@ -4,76 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Document</title>
+    <style>
+        .ms-controller {
+            display: none;
+        }
+    </style>
     <script src="assets/js/lib.js"></script>
     <script>
-        function handleReasons(reasons, vm) {
-            reasons.forEach(function (reason) {
-                switch (reason.element.dataset.fid) {
-                    case 'loginform_username':
-                        vm.aaaField.errorMessage = reason.getMessage();
-                        break;
-                    case 'loginform_password':
-                        vm.bbbField.errorMessage = reason.getMessage();
-                        break;
-                    case 'loginform_equalpassword':
-                        vm.cccField.errorMessage = reason.getMessage();
-                        break;
-                    default: break;
-                }
-            });
-        }
+        function loadScript(url, callback){
 
-        function clearErrorMessages(fid, vm) {
-            switch (fid) {
-                case 'loginform_username':
-                    vm.aaaField.errorMessage = '';
-                    break;
-                case 'loginform_password':
-                    vm.bbbField.errorMessage = '';
-                    break;
-                case 'loginform_equalpassword':
-                    vm.cccField.errorMessage = '';
-                    break;
-                default: break;
-            }
-        }
+            var script = document.createElement("script")
+            script.type = "text/javascript";
 
-        var appvm = avalon.define({
-            $id: "test",
-            aaa: "",
-            bbb: '',
-            ccc: '',
-            aaaField: {
-                errorMessage: ''
-            },
-            bbbField: {
-                errorMessage: ''
-            },
-            cccField: {
-                errorMessage: ''
-            },
-            validate: {
-                onError: function (reasons) {
-                    handleReasons(reasons, appvm);
-                },
-                onSuccess: function (reasons) {
-                    console.dir(this);
-                    var self = this;
-                    clearErrorMessages(self.dataset.fid, appvm);
-                },
-                onValidateAll: function (reasons) {
-                    if (reasons.length) {
-                        console.log('有表单没有通过');
-                    } else {
-                        console.log('全部通过');
+            if (script.readyState){  //IE
+                script.onreadystatechange = function(){
+                    if (script.readyState == "loaded" ||
+                            script.readyState == "complete"){
+                        script.onreadystatechange = null;
+                        callback();
                     }
-                }
+                };
+            } else {  //Others
+                script.onload = function(){
+                    callback();
+                };
             }
-        })
 
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
     </script>
 </head>
-<body ms-controller="test">
+<body class="ms-controller" ms-controller="test">
     <form ms-validate="@validate">
         <p><input name="username" ms-duplex="@aaa" placeholder="username"
                   data-fid="loginform_username"
@@ -91,5 +53,12 @@
         <div class="helpblock">{{@cccField.errorMessage}}</div>
         <p><input type="submit" value="submit"/></p>
     </form>
+    <!--同步加载-->
+    <script src="demos/form/js/index.js"></script>
+    <!--<script>-->
+        <!--loadScript("demos/form/js/index.js", function () {-->
+            <!--window.main();-->
+        <!--});-->
+    <!--</script>-->
 </body>
 </html>
