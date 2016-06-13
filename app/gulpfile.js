@@ -15,7 +15,7 @@ var paths = {
 };
 
 // sass
-var sassmodule = require("./build/sass");
+var sassmodule = require("../../electron-build/build/sass");
 var localscsscompile = sassmodule.localscsscompile;
 var localsasscompile = sassmodule.localsasscompile;
 
@@ -26,7 +26,7 @@ var es6module = require("./build/es6");
 var templateModule = require("./build/template");
 
 // image
-var imageModule = require("./build/image");
+var imageModule = require("../../electron-build/build/image");
 var imageToBase64 = imageModule.imageToBase64;
 var imageToWebp = imageModule.imageToWebp;
 var imageToIos = imageModule.imageToIos;
@@ -85,12 +85,12 @@ imageToWebp({
     tmppath: "./tmp/images",
 });
 
-var concat = require("gulp-concat");
-var uglify = require('gulp-uglify');
+var concat = require("../../electron-build/node_modules/gulp-concat");
+var uglify = require('../../electron-build/node_modules/gulp-uglify');
 
 gulp.task("build-lib-js", function (name, src, dest) {
     gulp.src(src.split(","))
         .pipe(concat(name))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest(dest))
 });
