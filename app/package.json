@@ -14,7 +14,16 @@
     "watch:index:template": "gulp watch-swig-template --name index --watch '**/*.twig'"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "sass-material-colors": "0.0.5",
+    "sass-mediaqueries": "^1.6.1",
+    "sass-rem": "^1.2.2",
+    "sassstd": "^1.0.2",
+    "sassyjson": "^1.1.8",
+    "scss-zhilizhili-mei": "^1.0.5",
+    "zhilizhili-ui": "^1.2.47",
+    "zhilizhili-ui-plus": "^0.3.47",
+    "zhilizhili-ui-touch": "^0.2.22"
   },
   "devDependencies": {
     "babel-plugin-transform-regenerator": "^6.9.0",

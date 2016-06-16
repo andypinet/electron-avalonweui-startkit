@@ -1,0 +1,32 @@
+@import "import";
+@import "./media/tools";
+@import "./media/mobile/*";
+
+.custom {
+    /*font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
+    line-height:1;
+    background-color: #3e999f;
+    -webkit-font-smoothing: antialiased;
+
+    //font-family: "Droid Sans";
+    font-family: Serif;
+    font-weight: 400;
+    @include iphone5() {
+        //font-family: "STHeiTi";
+        font-family: "Helvetica Neue Light", STHeitiSC-Light;
+        //font-family: "Helvetica";
+        font-weight: 500;
+    }
+    &.english {
+        font-family: "Roboto";
+        background-color: #b388ff;
+        @include iphone5() {
+            font-family: "Helvetica";
+            font-weight: 300;
+        }
+    }
+}
+body {
+    margin: 0;
+}
+
