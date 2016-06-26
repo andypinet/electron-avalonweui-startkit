@@ -37,7 +37,3 @@
     @include write-after-content("#testdebug", "android xxxhdpi设备");
 }
 
-
-@debug $com-zhilizhili-media-ios-iphone4-media-query;
-@debug type-of($com-zhilizhili-media-ios-iphone4-media-query);
-

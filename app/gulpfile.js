@@ -47,6 +47,7 @@ localsasscompile({
     srcpath: "v1/sass/**/*.scss",
     srcfolder: "v1",
     destfolder: "assets/css/",
+    debug:true,
     rootpath: rootpath
 });
 

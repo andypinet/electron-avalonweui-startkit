@@ -1,32 +1,92 @@
 @import "import";
+@import "utils/*";
 @import "./media/tools";
 @import "./media/mobile/*";
 
-.custom {
-    /*font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
+.zl-font-base-zh {
     line-height:1;
-    background-color: #3e999f;
     -webkit-font-smoothing: antialiased;
+    //line-height: 1.42857;
+    letter-spacing: 0;
 
-    //font-family: "Droid Sans";
-    font-family: Serif;
-    font-weight: 400;
-    @include iphone5() {
-        //font-family: "STHeiTi";
+    @media screen and (width: 360px) {
+        font-family: Serif, sans-serif;
+        font-weight: 100;
+        @supports (display: flexbox){
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+        }
+    }
+
+    @include iphone4() {
         font-family: "Helvetica Neue Light", STHeitiSC-Light;
-        //font-family: "Helvetica";
         font-weight: 500;
     }
+
+    @include iphone5() {
+        font-family: "Helvetica Neue Light", STHeitiSC-Light;
+        font-weight: 500;
+    }
+
+    @include iphone6() {
+        font-family: "Helvetica Neue Light", STHeitiSC-Light;
+        font-weight: 500;
+    }
+
+    @include iphone6-plus() {
+        font-family: "Helvetica Neue Light", STHeitiSC-Light;
+        font-weight: 500;
+    }
+}
+
+.zl-font-base-en {
+    line-height:1;
+    -webkit-font-smoothing: antialiased;
+    //line-height: 1.42857;
+
+    @media screen and (device-width: 360px) {
+        font-family: "Droid Sans", Serif, sans-serif;
+        font-weight: 500;
+        @supports (display: flexbox){
+            font-family: "Roboto Medium", "Roboto", sans-serif;
+            font-weight: 500;
+        }
+    }
+
+    //@include iphone4() {
+    //    font-family: "Helvetica";
+    //    font-weight: 400;
+    //}
+    //
+    //@include iphone5() {
+    //    font-family: "Helvetica";
+    //    font-weight: 400;
+    //}
+    //
+    //@include iphone6() {
+    //    font-family: "Helvetica";
+    //    font-weight: 400;
+    //}
+    //
+    //@include iphone6-plus() {
+    //    font-family: "Helvetica";
+    //    font-weight: 400;
+    //}
+}
+
+.custom {
+    @extend .zl-font-base-zh;
+    background-color: get-random-color("rgba");
     &.english {
-        font-family: "Roboto";
-        background-color: #b388ff;
-        @include iphone5() {
-            font-family: "Helvetica";
-            font-weight: 300;
+        @extend .zl-font-base-en;
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                background-color: get-random-color("rgba");
+            }
         }
     }
 }
-body {
-    margin: 0;
-}
 
+body {
+    margin:0;
+}
